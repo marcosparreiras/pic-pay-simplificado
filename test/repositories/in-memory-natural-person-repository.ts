@@ -6,6 +6,11 @@ export class InMemoryNaturalPersonRepository
 {
   public items: NaturalPerson[] = [];
 
+  async findById(id: string): Promise<NaturalPerson | null> {
+    const naturalPerson = this.items.find((item) => item.id.toString() === id);
+    return naturalPerson ?? null;
+  }
+
   async findByEmail(email: string): Promise<NaturalPerson | null> {
     const naturalPerson = this.items.find((item) => item.email === email);
     return naturalPerson ?? null;
