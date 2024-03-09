@@ -12,7 +12,7 @@ export function makeShopkeeper(
   return Shopkeeper.create(
     {
       shopName: faker.company.name(),
-      cnpj: Math.floor(Math.random() * Math.pow(10, 11)).toString(),
+      cnpj: Math.floor(Math.random() * Math.pow(10, 14)).toString(),
       accountId: new UniqueEntityId(),
       email: faker.internet.email(),
       password: faker.internet.password(),
