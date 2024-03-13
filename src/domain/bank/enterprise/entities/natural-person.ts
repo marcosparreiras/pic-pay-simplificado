@@ -9,7 +9,7 @@ export interface NaturalPersonProps {
   password: string;
   accountId: UniqueEntityId;
   createdAt: Date;
-  updatedAt?: Date;
+  updatedAt?: Date | null;
 }
 
 export class NaturalPerson extends Entity<NaturalPersonProps> {

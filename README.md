@@ -19,3 +19,9 @@ Requisitos:
 - [] No recebimento de pagamento, o usuário ou lojista precisa receber notificação (envio de email, sms) enviada por um serviço de terceiro e eventualmente este serviço pode estar indisponível/instável. Use este mock para simular o envio (https://run.mocky.io/v3/54dc2cf1-3add-45b5-b5a9-6bf7e7f1f4a6).
 
 - [] Este serviço deve ser RESTFul.
+
+## PROXIMAS TASKS
+
+- [] criar fluxo de login (use-case e controller)
+- [] criar controller para create-shopkeeper e bank-transaction
+- [] criar middleware de authentificação e restringir rota de bank-transaction para usuários authentificados

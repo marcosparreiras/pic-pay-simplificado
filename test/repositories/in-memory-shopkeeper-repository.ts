@@ -1,7 +1,7 @@
-import { shopkeeperRepository } from "../../src/domain/bank/application/repositories/shopkeeper-repository";
+import { ShopkeeperRepository } from "../../src/domain/bank/application/repositories/shopkeeper-repository";
 import { Shopkeeper } from "../../src/domain/bank/enterprise/entities/shopkeeper";
 
-export class InMemoryShopKeeperRepository implements shopkeeperRepository {
+export class InMemoryShopKeeperRepository implements ShopkeeperRepository {
   public items: Shopkeeper[] = [];
 
   async findById(id: string): Promise<Shopkeeper | null> {

@@ -5,7 +5,7 @@ import { NaturalPerson } from "../../enterprise/entities/natural-person";
 import { HashGenerator } from "../cryptography/hash-generator";
 import { AccountRepository } from "../repositories/account-repository";
 import { NaturalPersonRepository } from "../repositories/natural-person-repository";
-import { shopkeeperRepository } from "../repositories/shopkeeper-repository";
+import { ShopkeeperRepository } from "../repositories/shopkeeper-repository";
 
 interface CreateNaturalPersonUseCaseRequest {
   fullName: string;
@@ -21,7 +21,7 @@ interface CreateNaturalPersonUseCaseReponse {
 export class CreateNaturalPersonUseCase {
   constructor(
     private naturalPersonRepository: NaturalPersonRepository,
-    private shopkeeperRepository: shopkeeperRepository,
+    private shopkeeperRepository: ShopkeeperRepository,
     private accountRepository: AccountRepository,
     private hashGenerator: HashGenerator
   ) {}
@@ -54,10 +54,9 @@ export class CreateNaturalPersonUseCase {
       accountId: account.id,
       password: hashedPassword,
     });
-    await Promise.all([
-      this.accountRepository.create(account),
-      this.naturalPersonRepository.create(naturalPerson),
-    ]);
+
+    await this.accountRepository.create(account);
+    await this.naturalPersonRepository.create(naturalPerson);
 
     return { naturalPerson };
   }

@@ -5,7 +5,7 @@ import { Shopkeeper } from "../../enterprise/entities/shopkeeper";
 import { HashGenerator } from "../cryptography/hash-generator";
 import { AccountRepository } from "../repositories/account-repository";
 import { NaturalPersonRepository } from "../repositories/natural-person-repository";
-import { shopkeeperRepository } from "../repositories/shopkeeper-repository";
+import { ShopkeeperRepository } from "../repositories/shopkeeper-repository";
 
 interface CreateShopkeeperUseCaseRequest {
   shopName: string;
@@ -21,7 +21,7 @@ interface CreateShopkeeperUseCaseResponse {
 export class CreateShopkeeperUseCase {
   constructor(
     private naturalPersonRepository: NaturalPersonRepository,
-    private shopkeeperRepository: shopkeeperRepository,
+    private shopkeeperRepository: ShopkeeperRepository,
     private accountRepository: AccountRepository,
     private hashGenerator: HashGenerator
   ) {}
@@ -55,10 +55,8 @@ export class CreateShopkeeperUseCase {
       password: hashedPassword,
     });
 
-    await Promise.all([
-      this.accountRepository.create(account),
-      this.shopkeeperRepository.create(shopkeeper),
-    ]);
+    await this.accountRepository.create(account);
+    await this.shopkeeperRepository.create(shopkeeper);
 
     return { shopkeeper };
   }

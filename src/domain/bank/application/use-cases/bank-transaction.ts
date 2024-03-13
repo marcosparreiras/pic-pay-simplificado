@@ -2,7 +2,7 @@ import { TransactionAccountNotFoundError } from "../../../core/Errors/transactio
 import { UserNotFoundError } from "../../../core/Errors/user-not-found-error";
 import { AccountRepository } from "../repositories/account-repository";
 import { NaturalPersonRepository } from "../repositories/natural-person-repository";
-import { shopkeeperRepository } from "../repositories/shopkeeper-repository";
+import { ShopkeeperRepository } from "../repositories/shopkeeper-repository";
 
 interface BankTransactionUseCaseRequest {
   value: number;
@@ -17,7 +17,7 @@ interface BankTransactionUseCaseResponse {
 export class BankTransactionUseCase {
   constructor(
     private naturalPersonRepository: NaturalPersonRepository,
-    private shopkeeperRepository: shopkeeperRepository,
+    private shopkeeperRepository: ShopkeeperRepository,
     private accountRepository: AccountRepository
   ) {}
 

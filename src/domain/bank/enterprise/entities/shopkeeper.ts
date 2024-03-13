@@ -9,7 +9,7 @@ export interface ShopkeeperProps {
   password: string;
   accountId: UniqueEntityId;
   createdAt: Date;
-  updatedAt?: Date;
+  updatedAt?: Date | null;
 }
 
 export class Shopkeeper extends Entity<ShopkeeperProps> {
