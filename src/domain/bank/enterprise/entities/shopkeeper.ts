@@ -43,7 +43,7 @@ export class Shopkeeper extends Entity<ShopkeeperProps> {
   }
 
   get updatedAt() {
-    return this.props.createdAt;
+    return this.props.updatedAt;
   }
 
   private touch() {

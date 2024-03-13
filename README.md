@@ -22,6 +22,6 @@ Requisitos:
 
 ## PROXIMAS TASKS
 
-- [] criar fluxo de login (use-case e controller)
+- [x] criar fluxo de login (use-case e controller)
 - [] criar controller para create-shopkeeper e bank-transaction
 - [] criar middleware de authentificação e restringir rota de bank-transaction para usuários authentificados

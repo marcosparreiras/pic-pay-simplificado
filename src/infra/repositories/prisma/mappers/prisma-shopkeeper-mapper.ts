@@ -33,7 +33,7 @@ export class PrismaShopkeeperMapper {
       id: data.id.toString(),
       name: data.shopName,
       password: data.password,
-      updateAt: data.updatedAt,
+      updateAt: data.updatedAt ?? null,
     };
   }
 }
