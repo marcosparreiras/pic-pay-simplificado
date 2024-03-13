@@ -24,6 +24,6 @@ export async function createNaturalPersonController(
 
     return response.status(201).json();
   } catch (error: unknown) {
-    next(error);
+    return next(error);
   }
 }

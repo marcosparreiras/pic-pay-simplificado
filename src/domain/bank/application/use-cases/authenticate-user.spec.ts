@@ -30,7 +30,7 @@ describe("AuthenticateUserUseCase [Use-Case]", () => {
     });
     naturalPersonRepository.items.push(naturalPerson);
     const result = await sut.execute({ email: naturalPerson.email, password });
-    expect(result.success).toEqual(true);
+    expect(result.user.id).toBeTruthy();
   });
 
   it("Should be ale to authenticate a user (shopkeeper)", async () => {
@@ -40,7 +40,7 @@ describe("AuthenticateUserUseCase [Use-Case]", () => {
     });
     shopkeeperRepository.items.push(shopkeeper);
     const result = await sut.execute({ email: shopkeeper.email, password });
-    expect(result.success).toEqual(true);
+    expect(result.user.id).toBeTruthy();
   });
 
   it("Should not be ale to authenticate a valid user with incorrect password", async () => {

@@ -1,4 +1,6 @@
 import { InvalidCredentialsError } from "../../../core/Errors/invalid-credentials-error";
+import { NaturalPerson } from "../../enterprise/entities/natural-person";
+import { Shopkeeper } from "../../enterprise/entities/shopkeeper";
 import { HashCompare } from "../cryptography/hash-compare";
 import { NaturalPersonRepository } from "../repositories/natural-person-repository";
 import { ShopkeeperRepository } from "../repositories/shopkeeper-repository";
@@ -9,7 +11,7 @@ interface AuthenticateUserUseCaseRequest {
 }
 
 interface AuthenticateUserUseCaseResponse {
-  success: boolean;
+  user: NaturalPerson | Shopkeeper;
 }
 
 export class AuthenticateUserUseCase {
@@ -41,6 +43,6 @@ export class AuthenticateUserUseCase {
       throw new InvalidCredentialsError();
     }
 
-    return { success: true };
+    return { user };
   }
 }
