@@ -4,7 +4,7 @@ import { makeShopkeeper } from "../../../../../test/factories/make-shopkeeper";
 import { InMemoryAccountRepository } from "../../../../../test/repositories/in-memory-account-repository";
 import { InMemoryNaturalPersonRepository } from "../../../../../test/repositories/in-memory-natural-person-repository";
 import { InMemoryShopKeeperRepository } from "../../../../../test/repositories/in-memory-shopkeeper-repository";
-import { UserNotFoundError } from "../../../core/Errors/user-not-found-error";
+import { NaturalPersonNotFoundError } from "../../../core/Errors/natural-person-not-found-error";
 import { BankTransactionUseCase } from "./bank-transaction";
 
 describe("BankTransactionUseCase [Use-Case]", () => {
@@ -82,6 +82,6 @@ describe("BankTransactionUseCase [Use-Case]", () => {
         payeeId: payee.id.toString(),
         value: 7,
       })
-    ).rejects.toBeInstanceOf(UserNotFoundError);
+    ).rejects.toBeInstanceOf(NaturalPersonNotFoundError);
   });
 });
