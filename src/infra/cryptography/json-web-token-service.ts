@@ -1,4 +1,4 @@
-import { JsonWebTokenError, JwtPayload, sign, verify } from "jsonwebtoken";
+import { JsonWebTokenError, sign, verify } from "jsonwebtoken";
 import { env } from "../env";
 
 export class JwtService {
@@ -7,7 +7,7 @@ export class JwtService {
     return token;
   }
 
-  static async validate(token: string) {
+  static async validate(token: string): Promise<string> {
     const payload = verify(token, env.JWT_SECRET);
     if (!Object.keys(payload).includes("id") || typeof payload === "string") {
       throw new JsonWebTokenError("Invalid Token payload");

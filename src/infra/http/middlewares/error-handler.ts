@@ -3,6 +3,7 @@ import { ZodError } from "zod";
 import { JsonWebTokenError } from "jsonwebtoken";
 import { TokenNotFoundError } from "../../errors/token-not-found-error";
 import { DomainError } from "../../../domain/core/Errors/domain-error";
+import { TransactionAuthorizationError } from "../../errors/transaction-authorization-error";
 
 export function ErrorHanlderMiddleware(
   error: Error,
@@ -17,7 +18,8 @@ export function ErrorHanlderMiddleware(
   }
   if (
     error instanceof JsonWebTokenError ||
-    error instanceof TokenNotFoundError
+    error instanceof TokenNotFoundError ||
+    error instanceof TransactionAuthorizationError
   ) {
     return response.status(401).json({
       message: error.message,
