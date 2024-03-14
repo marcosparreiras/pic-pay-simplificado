@@ -6,7 +6,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "dev": "tsx ./src/infra/http/server.ts"
+    "dev": "tsx --watch ./src/infra/http/server.ts"
   },
   "keywords": [],
   "author": "Marcos Parreias",
