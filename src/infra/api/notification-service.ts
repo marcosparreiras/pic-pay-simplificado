@@ -1,4 +1,5 @@
 import axios from "axios";
+import { env } from "../env";
 
 interface NotificationServiceRequest {
   to: string;
@@ -10,9 +11,6 @@ export class NotificationService {
     to,
     message,
   }: NotificationServiceRequest): Promise<void> {
-    await axios.post(
-      "https://run.mocky.io/v3/54dc2cf1-3add-45b5-b5a9-6bf7e7f1f4a6",
-      { to, message }
-    );
+    await axios.post(env.NOTIFICATION_SERVICE_URI, { to, message });
   }
 }

@@ -22,5 +22,5 @@ Requisitos:
 
 ## PROXIMAS TASKS
 
-- [] criar use-case e controller para deposito e saque
 - [] criar testes end-to-end para cada controller
+- [] criar use-case e controller para deposito e saque
