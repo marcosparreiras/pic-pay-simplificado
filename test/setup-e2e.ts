@@ -12,13 +12,14 @@ function generateUniqueDataBaseUrl(schema: string) {
 }
 
 const schemaId = randomUUID();
+process.env.DATABASE_URL = generateUniqueDataBaseUrl(schemaId);
+
 beforeEach(async () => {
-  process.env.DATABASE_URL = generateUniqueDataBaseUrl(schemaId);
   execSync("npx prisma migrate deploy");
 });
 
 afterEach(async () => {
   const prisma = new PrismaClient();
-  await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS ${schemaId} CASCADE`);
+  await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schemaId}" CASCADE`);
   await prisma.$disconnect();
 });
