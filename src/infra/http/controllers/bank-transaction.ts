@@ -4,6 +4,7 @@ import { makeBankTransaction } from "../../factories/make-bank-transaction";
 import { TransactionAuthorizationService } from "../../api/transaction-authorization-service";
 import { NotificationService } from "../../api/notification-service";
 import { TransactionAuthorizationError } from "../../errors/transaction-authorization-error";
+import { UnauthorizedActionError } from "../../errors/unauthorized-action-error";
 
 export async function bankTransactionController(
   request: Request,
@@ -17,6 +18,9 @@ export async function bankTransactionController(
   });
   try {
     const { value, payeeId, payerId } = requestBodySchema.parse(request.body);
+    if (payerId !== request.userId) {
+      throw new UnauthorizedActionError();
+    }
 
     const transactionAuthorization =
       await TransactionAuthorizationService.execute();

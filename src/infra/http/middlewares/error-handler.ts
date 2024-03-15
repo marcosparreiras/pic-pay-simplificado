@@ -4,6 +4,7 @@ import { JsonWebTokenError } from "jsonwebtoken";
 import { TokenNotFoundError } from "../../errors/token-not-found-error";
 import { DomainError } from "../../../domain/core/Errors/domain-error";
 import { TransactionAuthorizationError } from "../../errors/transaction-authorization-error";
+import { UnauthorizedActionError } from "../../errors/unauthorized-action-error";
 
 export function ErrorHanlderMiddleware(
   error: Error,
@@ -19,7 +20,8 @@ export function ErrorHanlderMiddleware(
   if (
     error instanceof JsonWebTokenError ||
     error instanceof TokenNotFoundError ||
-    error instanceof TransactionAuthorizationError
+    error instanceof TransactionAuthorizationError ||
+    error instanceof UnauthorizedActionError
   ) {
     return response.status(401).json({
       message: error.message,
