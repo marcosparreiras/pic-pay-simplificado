@@ -12,12 +12,11 @@ describe("POST /natural-person [E2E]", () => {
     };
 
     const response = await request(app).post("/natural-person").send(data);
-
     expect(response.status).toEqual(201);
+
     const naturalPersonOnDatabase = await prisma.user.findUnique({
       where: { document: data.cpf },
     });
-
     expect(naturalPersonOnDatabase).toEqual(
       expect.objectContaining({
         name: data.fullName,
