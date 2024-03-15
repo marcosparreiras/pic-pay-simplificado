@@ -18,7 +18,7 @@ export async function authenticateUserController(
     const authenticateUserUseCase = makeAuthenticateUserUseCase();
     const { user } = await authenticateUserUseCase.execute({ email, password });
     const token = await JwtService.generate(user.id.toString());
-    return response.status(200).json({ token });
+    return response.status(201).json({ token });
   } catch (error: unknown) {
     return next(error);
   }

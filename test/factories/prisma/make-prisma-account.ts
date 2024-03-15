@@ -5,7 +5,7 @@ import { prisma } from "../../../src/infra/repositories/prisma/prisma-service";
 import { makeAccount } from "../make-account";
 
 export async function makePrismaAccount(
-  overide: Partial<AccountProps>,
+  overide: Partial<AccountProps> = {},
   id?: UniqueEntityId
 ) {
   const account = makeAccount(overide, id);
