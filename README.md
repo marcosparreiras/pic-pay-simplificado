@@ -2,11 +2,11 @@
 
 - [https://github.com/PicPay/picpay-desafio-backend](https://github.com/PicPay/picpay-desafio-backend)
 
-## Descrição
+## Descrição do desafio
 
 Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinheiro e realizam transferências entre eles. Vamos nos atentar somente ao fluxo de transferência entre dois usuários.
 
-### Requisitos
+### Requisitos do desafio
 
 - [x] Para ambos tipos de usuário, precisamos do Nome Completo, CPF, e-mail e Senha. CPF/CNPJ e e-mails devem ser únicos no sistema. Sendo assim, seu sistema deve permitir apenas um cadastro com o mesmo CPF ou endereço de e-mail.
 
@@ -31,9 +31,9 @@ Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinhei
 | Método | Rota                        | Necessário autorização | Descrição                                                                                         |
 | ------ | --------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------- |
 | POST   | /natural-person             | ❌                     | Cria uma pessoa física e atribui uma conta a ela                                                  |
-| POST   | /shopkeeper                 | ❌                     | Cria um logista e atribui uma conta a ele                                                         |
-| POST   | /session                    | ❌                     | Inicia a sessão de um usuarion na aplicação, retorna um token de autorização                      |
-| POST   | /natural-person/transaction | ✅                     | Realiza uma transação financeira de uma pessoa fisica para um lojista ou para outra pessoa física |
+| POST   | /shopkeeper                 | ❌                     | Cria um lojista e atribui uma conta a ele                                                         |
+| POST   | /session                    | ❌                     | Inicia a sessão de um usuário na aplicação e retorna um token de autorização                      |
+| POST   | /natural-person/transaction | ✅                     | Realiza uma transação financeira de uma pessoa física para um lojista ou para outra pessoa física |
 
 #### POST /natural-person
 
@@ -99,7 +99,11 @@ Certifique-se de ter o Docker e o Node.js instalados em sua máquina antes de pr
 
 1. Faça o clone do projeto
 
-2. Navegue até diretório do projeto instale as dependências com o comando:
+```bash
+git clone https://github.com/marcosparreiras/pic-pay-simplificado.git
+```
+
+2. Navegue até diretório do projeto e instale as dependências com o comando:
 
 ```bash
 npm install
@@ -117,13 +121,13 @@ docker compose up -d
 npm run dev
 ```
 
-ou, utilize o seguinte comando para rodar os testes de unidade
+ou, rode os testes de unidade com o comando:
 
 ```bash
 npm run test
 ```
 
-ou, utilize o seginte comando para rodar os testes end-to-end
+ou, rode os testes end-to-end com o comando:
 
 ```bash
 npm run test:e2e
